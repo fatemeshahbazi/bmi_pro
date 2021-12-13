@@ -9,6 +9,8 @@ db.sqlite3
 media
 .idea/
 *.idea/*
+.env
+.env.sample
 
 
 #PyCharm #

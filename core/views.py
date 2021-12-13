@@ -2,15 +2,16 @@ from rest_framework.response import Response
 from accounts.models import User
 from .serializers import BmiSerializer
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework.permissions import AllowAny
 
 from .models import BmiMeasurement
+from accounts.permissions import SpecificToken
 
 
 class BmiCreate(APIView):
     serializer_class = BmiSerializer
-    permission_classes = [AllowAny, ]
+    permission_classes = [SpecificToken]
     authentication_classes = JSONWebTokenAuthentication,
 
     @classmethod
@@ -18,7 +19,7 @@ class BmiCreate(APIView):
         return cls.serializer_class
 
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer()(data=request.data)
+        serializer = self.get_serializer()(data=request.data, request=request)
         serializer.is_valid(raise_exception=True)
         if request.user.is_authenticated:
             serializer.save(user=request.user)
@@ -32,4 +33,5 @@ class BmiCreate(APIView):
             return Response({'message': 'You must login first'}, status=401)
         user = request.user
         queryset = BmiMeasurement.objects.filter(user=user)
-        return Response(serializer(queryset, many=True).data, status=200)
+        return Response(serializer(queryset, many=True,request=request).data, status=200)
+

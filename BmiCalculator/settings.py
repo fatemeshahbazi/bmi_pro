@@ -1,15 +1,13 @@
-
 from pathlib import Path
 from decouple import config, Csv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-import core.apps
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 SECRET_KEY = config('SECRET_KEY')
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-
 
 # Application definition
 
@@ -26,7 +24,6 @@ INSTALLED_APPS = [
 
     # Third party
     'rest_framework',
-    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -37,6 +34,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'BmiCalculator.urls'
@@ -59,16 +57,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BmiCalculator.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': config('ENGINE'),
-        'NAME': config('NAME'),
-        'USER': config('USER'),
-        'PASSWORD': config('PASSWORD'),
+        'NAME': 'calculator',
+        'USER': 'root',
+        'PASSWORD': 'root',
         'HOST': config('HOST'),
         'PORT': config('PORT')
     }
@@ -90,7 +87,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -104,7 +100,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -114,3 +109,10 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+JWT_SECRET_KEY = 'JWT_SECRET_KEY_JWT_SECRET_KEY_JWT_SECRET_KEY'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'accounts.jwtbackends.JWTAuthentication',
+    )
+}

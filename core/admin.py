@@ -5,4 +5,4 @@ from . import models
 
 @admin.register(models.BmiMeasurement)
 class BmiMeasurementAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['height', 'weight']

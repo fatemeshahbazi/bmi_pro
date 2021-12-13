@@ -5,7 +5,6 @@ from .views import BmiCreate
 app_name = 'core'
 
 urlpatterns = [
-    path('', BmiCreate.as_view(), name="BmiCreate"),
-    # path('<int:pk>/', BmiRead.as_view(), name="BmiRead"),
+    path('', BmiCreate.as_view(), name="bmicreate"),
 
 ]

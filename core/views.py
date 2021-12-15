@@ -19,8 +19,10 @@ class BmiCreate(APIView):
         return cls.serializer_class
 
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer()(data=request.data, request=request)
+        serializer = self.get_serializer()(data=request.data)
         serializer.is_valid(raise_exception=True)
+        print('tttttttttttttttt')
+        print(serializer.data)
         if request.user.is_authenticated:
             serializer.save(user=request.user)
         else:

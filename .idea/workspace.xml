@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94bc0e64-353c-41f1-8346-27cd1e06e6d5" name="Changes" comment="" />
+    <list default="true" id="94bc0e64-353c-41f1-8346-27cd1e06e6d5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/tests/test_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/tests/test_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/tests/test_serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/tests/test_serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/tests/test_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/tests/test_views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +104,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/core/views.py</url>
-          <line>23</line>
+          <line>25</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
